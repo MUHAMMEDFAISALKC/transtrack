@@ -3,7 +3,6 @@ async function entrying() {
     if (document.getElementById("particular").value) {
         if (document.getElementById("quantity").value) {
             await autoEntry()
-            await rupeeSymboling()
         }
     }
 }
