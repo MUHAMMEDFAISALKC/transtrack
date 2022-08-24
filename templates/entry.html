@@ -82,42 +82,6 @@
                 <span><input style="width: 100%;" type="text" name="site" id="site"></span>
             </div>
         </div>
-            <!--
-            <tr class="entryHead2">
-                    <th style="flex:1">Invoice No:</th>
-                    <td style="display: flex;">                      
-                        <div class="input-group">
-                            <input type="text" id="invoiceNo" value="{{invoiceNo}}" disabled>
-                        <div class="input-group-append">
-                            <span onclick="invoiceNoEdit()" class=" input-group-text material-icons" >edit</span>
-                        </div>
-                    </div>
-                    </td>
-                    <th style="flex:1">Client:</th>
-                    
-                    <th style="flex:1">Ph:</th>
-                    <td style="flex:1"1><input type="number" id="cPhone"></td>
-                    <th style="flex:1">Vehicle No:</th>
-                    <td style="flex:1"><input type="text" id="vehicleNo"></td>
-                </tr>
-           
-            <tr class="entryHead2" >
-                    <th style="flex:1">State:</th>
-                    <td style="flex:1" ><select oninput="entrying()" type="text" id="state">
-                        <option></option>
-                        <option value="kerala" id="kerala">Kerala</option>
-                        <option value="outofstate" id="outOfKerala">Out of state</option>
-                        </select>
-                    </td>
-                    <th style="flex:1">Address:</th>
-                    <td style="flex:1"><input type="text" id="address1"></td>
-                    <th style="flex:1">Client GSTin:</th>
-                    <td style="flex:1"><input type="text" id="clientGst"></td>
-                    <th style="flex:1">Site:</th>
-                    <td style="flex:1"><input type="text" id="site"></td>
-                </tr>
-            </div>
-            -->
         <div class="entry-detail" style="flex:1; margin-top: 0px;">
         <table class="table entry-table" style="margin-top: 30px;"> 
             <thead>
@@ -157,7 +121,7 @@
                     <input name="nameCopy" type="hidden" id="nameCopy">
                     <td style="width:7%;"><input oninput="entrying()" name="quantity" type="number" id="quantity"></td>
                     <td style="width:7%;"><input oninput="entrying()" name="rate" disabled type="number" id="rate"></td>
-                    <td style="width:9%;"><input readonly="readonly" type="number" name="price"  id="price"></td>
+                    <td style="width:9%;"><input readonly="readonly" type="text" name="price"  id="price"></td>
                     <td style="width:7%;"><input readonly="readonly" type="number" name="cgst" id="cgst"></td>
                     <td style="width:7%;"><input readonly="readonly" type="number" name="sgst" id="sgst"></td>
                     <td style="width:7%;"><input readonly="readonly" type="number" name="igst" id="igst"></td>
