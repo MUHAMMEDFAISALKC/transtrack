@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lan="en" id="html1">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="intial-scale=1, width=device-width">
+        <!-- sass complied css file -->
+        <link rel="stylesheet" href="/static/css/style.css">
+        <!-- bootstrap CSS only -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+        <!-- bootstrap JavaScript Bundle with Popper -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+        
+        <!-- local script files -->
+        <script src="/static/js/main.js" type="text/javascript"></script>
+        <script src="/static/js/entry.js" type="text/javascript"></script>
+        <!-- google icons-->
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        
+        <title>GABBRO: Billing</title>
+    </head>
+    
+    <body class="bill-body" onload="billready();">
+        <main class="bill-main" id="billMain">
+            <div class="bill-head">
+                <img src="/static/img/Gabbro-logo-print.png" style="height: 60px;">
+            
+                <div class="seperator-line"></div>
+            </div>
+        <div class="address-body">
+            <div class="address">
+                    <h6 style="font-weight: bold;">GABBRO Cement Bricks and Products</h6>
+                    <span>Karimpuzha, Chandakkunnu (P.O)</span>
+                    <span>Nilambur,Malappuram Dist.</span>
+                    <span>GSTin: 32CICPC6236J1ZK</span>
+                    <span>Licence No: 131249012100374</span>
+                    <span >Ph: 9447536992 / 9946706363</span>
+                    <div style="margin-top: 20px;">
+                        <span>Payment Mode:</span><span>{{paymentMode}}</span>
+                    </div>
+            </div>
+            
+            <div class="bill-b-2">
+                <h3>INVOICE</h3>
+                <div>
+                    <span>Invoice No: </span><span>#{{invoiceNo}}</span>
+                </div>
+                
+                <div>
+                    {% if billDate %}
+                    <span>Invoice Date: </span><span>{{billDate}}</span>
+                    {% else %}
+                        <span>Invoice Date: </span><span id="billDate1"></span>
+                    {% endif %}
+                </div>
+                <div>
+                    <span>Time: </span><span id="timeArea"></span>
+                </div>
+                <div>
+                    <span>Due Date: </span><span id="dueDate"></span>
+                </div>
+            </div>
+        </div>
+        <div class="invoice-data">
+            <table class="bill-a table">
+                <tr class="bill-row" style="background-color:rgb(229, 234, 238) ;">
+                    <th style="flex:1;" >SL.NO</th>
+                    <th style="flex:2;">PARTICULRS</th>
+                    <th style="flex:1;">QTY</th>
+                    <th style="flex:1;">PRICE</th>
+                    <th style=" flex: 1.5;text-align: right;">TOTAL</th>
+                </tr>
+                <tr class="bill-row">
+                    <td style="flex:1;">1</td>
+                    <td style="flex:2;">{{itemNames}}</td>
+                    <td style="flex:1;">{{quantity}}</td>
+                    <td style="flex:1;">{{rate}}</td>
+                    <td style="flex:1.5; text-align: right;">{{price}}</td>
+                </tr>
+                <tr class="bill-row">
+                    <td style="flex:3; border: white;"></td>
+                    <th style="border: white; text-align: right;">Sub Total</th>
+                    <td style="text-align: right;">{{price}}</td>
+                </tr>
+                {% if cgst %}
+                <tr class="bill-row">
+                    <td style="flex:3; border: white;"></td>
+                    <th style="border: white; text-align: right;">CGST 9%</th>
+                    <td style="text-align: right;">{{cgst}}</td>
+                </tr>
+                <tr class="bill-row">
+                    <td style="flex:3; border: white;"></td>
+                    <th style="border: white; text-align: right;">SGST 9%</th>
+                    <td style="text-align: right;">{{sgst}}</td>
+                </tr>
+                {% endif %}
+                {% if igst %}
+                <tr class="bill-row">
+                    <td style="flex:3; border: white;"></td>
+                    <th style="border: white; text-align: right;">IGST 18%</th>
+                    <td style="text-align: right;">{{igst}}</td>
+                </tr>
+                {% endif %}
+                <tr class="bill-row">
+                    <td style="flex:3; border: white;"></td>
+                    <th style="border: white; text-align: right;">TOTAL GST</th>
+                    <td style="text-align: right;">{{totalGst}}</td>
+                </tr>
+                <tr class="bill-row">
+                    <td style="flex:3; border: white;"></td>
+                    <th style="border: white; text-align: right;">SHIPPING & MCL</th>
+                    <td style="text-align: right;">{{shipLoad}}</td>
+                </tr>
+                <tr class="bill-row">
+                    <td style="flex:3; border: white;"></td>
+                    <th style="border: white; text-align: right;">TOTAL PRICE</th>
+                    <th style="text-align: right; background-color:rgb(229, 234, 238)">{{totalPrice}}</th>
+                </tr>
+            </table>
+        </div>
+        <div class="address">
+            <h6 style="font-weight:bold;">Bill to:</h6>
+            <b><span style="font-weight: bold;">{{client}}</span></b>
+            <span>{{address1}}</span>
+            <span>{{address2}}</span>
+            <span>GSTin: {{clientGst}}</span>
+            {% if cPhone2 %}
+                <span >Ph: {{cPhone1}} / {{cPhone2}}</span>
+            {% else %}
+                <span >Ph: {{cPhone1}}</span>
+            {% endif %}
+        </div>
+        <div class="thankwish">
+            <span style="font-style:italic;">Thank you for your Business!</span>
+        </div>
+        <img class="watermark" src="/static/img/Gabbro-stone-2.png">
+        </main>
+        <section class="bill-activity">
+            <span onclick="window.print()" class="material-icons" id="printButton" >print</span>
+        </section>
+    </body>
+</html>

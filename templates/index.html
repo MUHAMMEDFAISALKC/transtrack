@@ -1,0 +1,109 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    home
+{% endblock %}
+
+{% block main %}
+    <!--
+    <script>
+        const bricks= []
+        let brick
+    </script>
+    {% for row in rows %}
+    <script>
+        brick = {"item_code":"{{row.item_code}}","measurement":"{{row.measurement}}", "price": "{{row.price}}"}
+        bricks.push(brick)
+    </script>
+    {% endfor %}
+    <script>
+        console.log(bricks)
+        
+    </script>
+    -->
+    <div class="my-entry">
+        <table class="table-borderless"  style="margin-top: 40px">
+            <thead class="entryHead">
+                <tr style="display: flex;flex:1 1 auto ;padding: 5px; width:100%; align-items:center; justify-content:space-between;">
+                    <th style="flex:2">Invoice No:</th>
+                    <td style="display: flex;">                      
+                        <div class="input-group">
+                            <input type="text" id="invoiceNo" disabled>
+                        <div class="input-group-append">
+                            <span onclick="invoiceNoEdit()" class=" input-group-text material-icons" >edit</span>
+                        </div>
+                    </div>
+                    </td>
+                    <td style="flex:2;"></td>
+                    <th style="flex:2">Party:</th>
+                    <td style="flex:6"><input type="text" id="party"></td>
+                    <th style="flex:2">Vehicle No:</th>
+                    <td style="flex:4"><input type="text" id="vehicleNo"></td>
+                </tr>
+            </thead>
+            <tbody class="entryHead2" >
+                <tr style="display: flex; flex:1 1 auto; width:100%; padding: 5px; align-items:center; justify-content:space-around;">
+                    <th style="flex:1">State:</th>
+                    <td style="flex:3.5" ><select oninput="entrying()" type="text" id="state">
+                        <option></option>
+                        <option value="kerala" id="kerala">Kerala</option>
+                        <option value="outofstate" id="outOfKerala">Out of state</option>
+                        </select>
+                    </td>
+                    <th style="flex:1">Site:</th>
+                    <td style="flex:2.5"><input type="text" id="site"></td>
+                    <td style="flex:4"></td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table" style="margin-top: 30px;" > 
+            <thead style="border-top:#191970; border-top-width:2px; border-top-style: solid;">
+                <tr >
+                    <th style="width:5%;">Sl No</th>
+                    <th style="width:20%;">Particulars</th>
+                    <th style="width:6%;" >Quantity</th>
+                    <th style="width:6%;" >Rate/1</th>
+                    <th >Price</th>
+                    <th style="width:5%;" >CGST</th>
+                    <th style="width:5%;">SGST</th>
+                    <th style="width:5%;">IGST</th>
+                    <th>Total GST</th>
+                    <th>Total Price</th>
+                    <th style="width:9%;">Action</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <form action="/entry" method="post">
+                    <td><input disabled type="number" id="slno"></td>
+                    <td><select  oninput="entrying()" name="particular" id="particular" class="form-select">
+                            <option value="empty"></option>
+                            {% for row in rows %}
+                            <option value="{{row.price}}">{{row.measurement}}</option>
+                            {% endfor %}
+                        </select>
+                    </td>
+                    <td><input oninput="entrying()" name="quantity" type="number" id="quantity"></td>
+                    <td><input oninput="entrying()" name="rate" disabled type="number" id="rate"></td>
+                    <td><input readonly="readonly" type="number" name="price"  id="price"></td>
+                    <td><input readonly="readonly" type="number" name="cgst" id="cgst"></td>
+                    <td><input readonly="readonly" type="number" name="sgst" id="sgst"></td>
+                    <td><input readonly="readonly" type="number" name="igst" id="igst"></td>
+                    <td><input readonly="readonly" type="number" name="totalGst" id="totalGst"></td>
+                    <td><input readonly="readonly" type="text" name="totalPrice" id="totalPrice"></td>
+                    <td><select name="actMenu" id="actMenu" onchange="toggleAction()" style="width:90%;" class="form-select">
+                            <option value="empty"></option>
+                            <option value="entry">Entry</option>
+                            <option value="cancel">Cancel</option>
+                            <option value="edit">Edit</option>
+                        </select>
+                    </td>
+                    <td><button class="my-btn" id="entryButton" onmouseover="rateStatusing()">Submit</button></td>
+                    </form>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+{% endblock %}

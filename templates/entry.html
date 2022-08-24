@@ -1,0 +1,182 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    home
+{% endblock %}
+
+{% block main %}
+    <!--
+    <script>
+        const bricks= []
+        let brick
+    </script>
+    {% for row in rows %}
+    <script>
+        brick = {"item_code":"{{row.item_code}}","measurement":"{{row.measurement}}", "price": "{{row.price}}"}
+        bricks.push(brick)
+    </script>
+    {% endfor %}
+    <script>
+        console.log(bricks)
+        
+    </script>
+    -->
+    <form onsubmit="return validateEntry()" action="/entry" method="post" target="_blank">
+    <div class="my-entry">
+        <div class="entry-detail">
+            <div class="entryHead" style="flex:1">
+                <span style="margin-bottom: 10px;">Invoice No:</span>
+                <span style="margin-bottom: 8px;">State:</span>
+                <span>Date:</span>
+            </div>
+            <div class="entryHead" style="flex:1; width: 60%; align-items: flex-start;">                
+                    <div style="padding-bottom: 20px;" class="input-group">
+                        <input style="width: 60% ;" type="text" name="invoiceNo" id="invoiceNo" value="{{invoiceNo}}" readonly="readonly">
+                        <div class="input-group-append">
+                            <span onclick="invoiceNoEdit()" class=" input-group-text material-icons">edit</span>
+                        </div>
+                    </div>
+                <div style="padding-bottom: 20px; width: 90%;">
+                    <select style="width:100%; height: 33px; " name="address2" oninput="entrying()" type="text" id="state">
+                    <option></option>
+                    <option value="kerala" id="kerala">Kerala</option>
+                    <option value="outofstate" id="outOfKerala">Out of state</option>
+                    </select>
+                </div>
+                <div>
+                    <span><input style="width: 90%; height: 33px;" type="date" name="billDate" id="billDate"></span>
+                </div> 
+            </div>
+            <div class="entryHead" style="flex:1">
+                <span style="margin-bottom: 6px;">Client:</span>
+                <span style="margin-bottom: 8px;">Address:</span>
+                <span>ship & load:</span>
+            </div>
+            <div class="entryHead"  style="flex:1;">
+                <span><input style="width: 100%;" type="text" name="client" id="client"></span>
+                <span><input style="width: 100%;" type="text" name="address1" id="address1"></span>
+                <span><input oninput="entrying()" style="width: 100%;" type="text" name="shipLoad" id="shipLoad"></span>
+            </div>
+            <div class="entryHead" style="flex:1">
+                <span style="margin-bottom: 6px;">Client GSTin:</span>
+                <span style="margin-bottom: 8px;">Ph:</span>
+                <span>Payment mode:</span>
+            </div>
+            <div class="entryHead" style="flex:1">
+                <span><input style="width: 100%;" type="text" name="clientGst" id="clientGst"></span>
+                <span><input style="width: 100%;" type="text" name="cPhone" id="cPhone"></span>
+                <span style="width: 100%; height: 40px;"><select  style="width: 100%; height: 33px;"id="paymentMode" name="paymentMode">
+                        <option></option>
+                        <option value="cash">Cash</option>
+                        <option value="paidOnline">paid Online</option>
+                        <option value="credit">Credit</option>
+                        <option value="partial">Partial Paid</option>
+                    </select></span>
+            </div>
+            <div class="entryHead" style="flex:1">
+                <span style="margin-bottom: 6px;">Vehicle No:</span>
+                <span>Site:</span>
+            </div>
+            <div class="entryHead" style="flex:1;">
+                <span><input style="width: 100%;" type="text" name="vehicleNo" id="vehicleNo"></span>
+                <span><input style="width: 100%;" type="text" name="site" id="site"></span>
+            </div>
+        </div>
+            <!--
+            <tr class="entryHead2">
+                    <th style="flex:1">Invoice No:</th>
+                    <td style="display: flex;">                      
+                        <div class="input-group">
+                            <input type="text" id="invoiceNo" value="{{invoiceNo}}" disabled>
+                        <div class="input-group-append">
+                            <span onclick="invoiceNoEdit()" class=" input-group-text material-icons" >edit</span>
+                        </div>
+                    </div>
+                    </td>
+                    <th style="flex:1">Client:</th>
+                    
+                    <th style="flex:1">Ph:</th>
+                    <td style="flex:1"1><input type="number" id="cPhone"></td>
+                    <th style="flex:1">Vehicle No:</th>
+                    <td style="flex:1"><input type="text" id="vehicleNo"></td>
+                </tr>
+           
+            <tr class="entryHead2" >
+                    <th style="flex:1">State:</th>
+                    <td style="flex:1" ><select oninput="entrying()" type="text" id="state">
+                        <option></option>
+                        <option value="kerala" id="kerala">Kerala</option>
+                        <option value="outofstate" id="outOfKerala">Out of state</option>
+                        </select>
+                    </td>
+                    <th style="flex:1">Address:</th>
+                    <td style="flex:1"><input type="text" id="address1"></td>
+                    <th style="flex:1">Client GSTin:</th>
+                    <td style="flex:1"><input type="text" id="clientGst"></td>
+                    <th style="flex:1">Site:</th>
+                    <td style="flex:1"><input type="text" id="site"></td>
+                </tr>
+            </div>
+            -->
+        <div class="entry-detail" style="flex:1; margin-top: 0px;">
+        <table class="table entry-table" style="margin-top: 30px;"> 
+            <thead>
+                <tr >
+                    <th style="width:6%;">Sl No</th>
+                    <th style="width:15%;">Particulars</th>
+                    <th style="width:7%;">Quantity</th>
+                    <th style="width:7%;">Rate/1</th>
+                    <th style="width:9%;">Price</th>
+                    <th style="width:7%;">CGST</th>
+                    <th style="width:7%;" >SGST</th>
+                    <th style="width:7%;">IGST</th>
+                    <th style="width:9%;">Total GST</th>
+                    <th style="width:12%;">Total Price</th>
+                    <th>Action</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td style="width:6%;"><input disabled type="number" id="slno"></td>
+                    <td style="width:15%;"><select  oninput="entrying()" name="particular" id="particular" class="form-select">
+                            <option value="empty"></option>
+                            {% for row in rows %}
+                                {% if row.name|length <= 7 %}
+                                    <option value="{{row.item_code}}|{{row.price}}|{{row.name}}|{{row.measurement}}">{{row.name}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{row.measurement}}</option>
+                                {% elif row.name|length == 8 %}
+                                    <option value="{{row.item_code}}|{{row.price}}|{{row.name}}|{{row.measurement}}">{{row.name}}&nbsp;&nbsp;&nbsp;{{row.measurement}}</option>
+                                {% elif row.name|length == 9 %}
+                                    <option value="{{row.item_code}}|{{row.price}}|{{row.name}}|{{row.measurement}}">{{row.name}}&nbsp;&nbsp;{{row.measurement}}</option>
+                                {% elif row.name|length == 10 %}
+                                    <option value="{{row.item_code}}|{{row.price}}|{{row.name}}|{{row.measurement}}">{{row.name}} {{row.measurement}}</option>
+                                {% endif %}
+                            {% endfor %}
+                        </select>
+                    </td>
+                    <input name="nameCopy" type="hidden" id="nameCopy">
+                    <td style="width:7%;"><input oninput="entrying()" name="quantity" type="number" id="quantity"></td>
+                    <td style="width:7%;"><input oninput="entrying()" name="rate" disabled type="number" id="rate"></td>
+                    <td style="width:9%;"><input readonly="readonly" type="number" name="price"  id="price"></td>
+                    <td style="width:7%;"><input readonly="readonly" type="number" name="cgst" id="cgst"></td>
+                    <td style="width:7%;"><input readonly="readonly" type="number" name="sgst" id="sgst"></td>
+                    <td style="width:7%;"><input readonly="readonly" type="number" name="igst" id="igst"></td>
+                    <td style="width:9%;"><input readonly="readonly" type="number" name="totalGst" id="totalGst"></td>
+                    <td style="width:12%;"><input readonly="readonly" type="text" name="totalPrice" id="totalPrice"></td>
+                    <td><select name="actMenu" id="actMenu" onchange="toggleAction()" style="width:90%;" class="form-select">
+                            <option value="empty"></option>
+                            <option value="entry">Entry</option>
+                            <option value="cancel">Cancel</option>
+                            <option value="edit">Edit</option>
+                        </select>
+                    </td>
+                    <td><button class="my-btn" id="entryButton" onmouseover="rateStatusing()">Submit</button></td>
+                </tr>
+            </tbody>
+        </table>
+        </div>
+        
+    </div>
+</form>
+
+{% endblock %}

@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    log in
+{% endblock %}
+
+{% block main %}
+
+        <section class="part-1">
+            <img src="/static/gabbro-front.png" class="img-fluid front-img" >
+        </section>
+        <section class="form-container">
+            <form action="/login" method="post">
+                <div class="form-group m-2">
+                    <input class="form-control" type="text" name="user" autocomplete="off" autofocus placeholder="Name">
+                </div>
+                <div class="form-group m-2">
+                    <input  class="form-control" type="password" id="passSecurity" name="password" placeholder="Password" >
+                </div>
+                
+                <div style="display:flex" class="form-group m-2">
+                    <input class="form-check" type="checkbox" id="showPassword" name="show-password" onchange="toggleShowPassword()">
+                    <label style="padding-left: 10px;" class="form-label" for="showPassword">Show password</label>
+                </div>
+                
+                <button class="btn btn-primary text-center" type="submit">Login</button>
+            </form>
+        </section>
+{% endblock %}

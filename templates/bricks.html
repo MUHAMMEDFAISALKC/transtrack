@@ -1,0 +1,45 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Bricks
+{% endblock %}
+
+{% block main %}
+    <div style="display: flex; flex-direction:column; align-items: center; justify-content: center; width: 100%;">
+        <div style="border-radius:15px ; border-width: 2px; padding: 20px;">
+            <button class="btn btn-light border">Add</button>
+            <button class="btn btn-light border">Edit</button>
+            <button class="btn btn-light border">Delete</button>
+        </div>
+        <div style="display: flex; align-items:center ;justify-content:space-around">
+            <table class="table table-striped " style="margin: 20px !important;">
+                <thead> 
+                    <tr class="table-primary">
+                        <th></th>
+                        <th scope="col">Sl.No</th>
+                        <th scope="col">Item code</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Measure(wxhxl)</th>
+                        <th scope="col">Cost</th>
+                        <th scope="col">Price</th>
+                        <th scope="col">Remarks</th>
+                    </tr>
+                </thead>
+                <tbody style="border-top:#191970; border-top-style:solid; border-top-width: 3px;">
+                {% for row in rows %}
+                    <tr scope="row">
+                        <td><input type="checkbox" value="{{row.item_code}}"></td>
+                        <td>{{row.sl_no}}</td>
+                        <td>{{row.item_code}}</td>
+                        <td>{{row.name}}</td>
+                        <td>{{row.measurement}}</td>
+                        <td>{{row.cost}}</td>
+                        <td>{{row.price}}</td>
+                        <td>{{row.Remark}}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}
