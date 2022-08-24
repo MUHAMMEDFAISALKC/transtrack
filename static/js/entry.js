@@ -2,11 +2,58 @@
 async function entrying() {
     if (document.getElementById("particular").value) {
         if (document.getElementById("quantity").value) {
-            autoEntry()
+            await autoEntry()
+            await rupeeSymboling()
         }
     }
 }
 
+async function rupeeSymboling() {
+    if (document.getElementById("rate")) {
+        let rate = document.getElementById("rate").value;
+        rate = "₹ " + rate
+        console.log(rate)
+        //document.getElementById("rate").innerHTML= rate
+    } 
+    if (document.getElementById("price")) {
+        let price = document.getElementById("price").value
+        price = "₹ " + price
+        console.log(price)
+        console.log(document.getElementById("price"))
+        document.getElementById("price").innerHTML= price
+    }
+    if (document.getElementById("cgst")) {
+        let cgst = document.getElementById("cgst").value
+        cgst = "₹ " + cgst
+        console.log(cgst)
+        console.log(document.getElementById("cgst"))
+        document.getElementById("cgst").innerHTML = cgst
+    }
+    if (document.getElementById("sgst")) {
+        let sgst = document.getElementById("sgst").value
+        sgst = "₹ " + sgst
+        console.log(sgst)
+        //document.getElementById("sgst").value =  "₹ " + sgst
+    }
+    if (document.getElementById("igst")) {
+        let igst = document.getElementById("igst").value
+        igst =  "₹ " + igst
+        console.log(igst)
+        //document.getElementById("igst").value =  "₹ " + igst
+    }
+    if (document.getElementById("totalGst")) {
+        let totalGst = document.getElementById("totalGst").value
+        totalGst = "₹ " + totalGst
+        console.log(totalGst)
+        //document.getElementById("totalGst").value =  "₹ " + totalGst
+    }
+    if (document.getElementById("totalPrice")) {
+        let totalPrice = document.getElementById("totalPrice").value
+        totalPrice = "₹ " + totalPrice
+        console.log(totalPrice)
+        //document.getElementById("totalPrice").value =  "₹ " + totalPrice
+    }
+}
 async function autoEntry() {
     let location = document.getElementById("state").value
     if (location=="kerala") {
@@ -58,7 +105,7 @@ async function pricing() {
     b = (+b)
     var price = a*b
     price = price.toFixed(2)
-    document.getElementById("price").value = await parseFloat(price)
+    document.getElementById("price").value = parseInt(price)
 }
 
 // for IGST
