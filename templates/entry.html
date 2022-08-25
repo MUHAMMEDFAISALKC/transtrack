@@ -83,6 +83,10 @@
                 <span><input style="width: 100%;" type="text" name="site" id="site"></span>
             </div>
         </div>
+        <section>
+            <input type="button" value="Add row" id="addRow" onclick="addRow()">
+        </section>
+        <!--  Billing row starts    -->
         <div class="entry-detail" style="flex:1; margin-top: 0px;">
         <table class="table entry-table" style="margin-top: 30px;"> 
             <thead>
@@ -101,7 +105,7 @@
                     <th></th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody id="rowBody">
                 <tr>
                     <td style="width:6%;"><input disabled type="number" id="slno"></td>
                     <td style="width:15%;"><select  onchange="renewRate()" oninput="entrying()" name="particular" id="particular" class="form-select">
