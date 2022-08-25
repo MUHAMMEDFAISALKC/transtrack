@@ -91,10 +91,19 @@ async function autoRating() {
             rate = rate.toFixed(2)
             document.getElementById("rate").value = parseFloat(rate)
         } else {
-
             document.getElementById("rate").value = document.getElementById("rate").value 
         }
     }
+}
+
+async function renewRate() {
+    let rate = document.getElementById("particular").value
+    rate = rate.split("|")
+    rate = rate[1]
+    rate = (+rate)
+    console.log(typeof(rate))
+    rate = rate.toFixed(2)
+    document.getElementById("rate").value = parseFloat(rate)
 }
 
 async function pricing() {
