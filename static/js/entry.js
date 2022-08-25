@@ -159,15 +159,15 @@ async function totalGsting() {
 
 function totalPricing() {
     let a = document.getElementById("price").value
-    let b = document.getElementById("totalGst").value
+    //let b = document.getElementById("totalGst").value
     let c = 0
     if (document.getElementById("shipLoad").value) {
         c = document.getElementById("shipLoad").value
     }
     a = (+a)
-    b = (+b)
+    //b = (+b)
     c = (+c)
-    let result = parseFloat(a) + parseFloat(b) +parseFloat(c)
+    let result = parseFloat(a) +parseFloat(c)
     result = result.toFixed(2)
     document.getElementById("totalPrice").value = result
 }
