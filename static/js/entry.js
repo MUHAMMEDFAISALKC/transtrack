@@ -307,7 +307,7 @@ async function slNumbering() {
     return slno
 }
 function addRows() {
-    let slid = await slNumbering();
+    let slid = slNumbering();
 
     let rowModel = `<tr style="margin-top:10px">
     <td style="width:6%;"><input disabled type="number" value="`+slid+`" id="slno`+slid+`"></td>
