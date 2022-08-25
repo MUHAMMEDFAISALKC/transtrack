@@ -64,7 +64,7 @@ async function autoEntry() {
         await mult9()
         await totalGsting()
         totalPricing()
-    } else if (location=="outofstate") {
+    } else if (location=="TamilNadu" || location=="Karnataka") {
         document.getElementById("cgst").value = ""
         document.getElementById("sgst").value = ""
         document.getElementById("slno").value = 1
@@ -155,6 +155,7 @@ async function totalGsting() {
         document.getElementById("totalGst").value = result
     }
 }
+
 
 
 function totalPricing() {
@@ -292,4 +293,45 @@ function validateEntry() {
     } else if (document.getElementById("actMenu").value == "entry") {
         return true
     }   
+}
+
+function addRow() {
+    let rowModel = `<tr>
+    <td style="width:6%;"><input disabled type="number" id="slno"></td>
+    <td style="width:15%;"><select  onchange="renewRate()" oninput="entrying()" name="particular" id="particular" class="form-select">
+            <option value="empty"></option>
+            {% for row in rows %}
+                {% if row.name|length <= 7 %}
+                    <option value="{{row.item_code}}|{{row.price}}|{{row.name}}|{{row.measurement}}">{{row.name}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{row.measurement}}</option>
+                {% elif row.name|length == 8 %}
+                    <option value="{{row.item_code}}|{{row.price}}|{{row.name}}|{{row.measurement}}">{{row.name}}&nbsp;&nbsp;&nbsp;{{row.measurement}}</option>
+                {% elif row.name|length == 9 %}
+                    <option value="{{row.item_code}}|{{row.price}}|{{row.name}}|{{row.measurement}}">{{row.name}}&nbsp;&nbsp;{{row.measurement}}</option>
+                {% elif row.name|length == 10 %}
+                    <option value="{{row.item_code}}|{{row.price}}|{{row.name}}|{{row.measurement}}">{{row.name}} {{row.measurement}}</option>
+                {% endif %}
+            {% endfor %}
+        </select>
+    </td>
+    <input name="nameCopy" type="hidden" id="nameCopy">
+    <td style="width:7%;"><input oninput="entrying()" name="quantity" type="number" id="quantity"></td>
+    <td style="width:7%;"><input oninput="entrying()" name="rate" disabled type="number" id="rate"></td>
+    <td style="width:9%;"><input readonly="readonly" type="text" name="price"  id="price"></td>
+    <td style="width:7%;"><input readonly="readonly" type="number" name="cgst" id="cgst"></td>
+    <td style="width:7%;"><input readonly="readonly" type="number" name="sgst" id="sgst"></td>
+    <td style="width:7%;"><input readonly="readonly" type="number" name="igst" id="igst"></td>
+    <td style="width:9%;"><input readonly="readonly" type="number" name="totalGst" id="totalGst"></td>
+    <td style="width:12%;"><input readonly="readonly" type="text" name="totalPrice" id="totalPrice"></td>
+    <td><select name="actMenu" id="actMenu" onchange="toggleAction()" style="width:90%;" class="form-select">
+            <option value="empty"></option>
+            <option value="entry">Entry</option>
+            <option value="cancel">Cancel</option>
+            <option value="edit">Edit</option>
+        </select>
+    </td>
+    <td><button class="my-btn" id="entryButton" onmouseover="rateStatusing()">Submit</button></td>
+</tr>`
+
+    let tree = document.getElementById('rowBody');
+    tree.innerHTML =+ rowModel;
 }
