@@ -295,9 +295,22 @@ function validateEntry() {
     }   
 }
 
+async function slNumbering() {
+    var slArray = []
+    for (let i=0; i<10; i++) {
+        idname = 'slno'+i
+        if(document.getElementById(idname)) {
+        slArray[i]=i
+        }
+    }
+    slno = slArray.length
+    return slno
+}
 function addRows() {
-    let rowModel = `<tr>
-    <td style="width:6%;"><input disabled type="number" id="slno"></td>
+    let slid = await slNumbering();
+
+    let rowModel = `<tr style="margin-top:10px">
+    <td style="width:6%;"><input disabled type="number" value="`+slid+`" id="slno`+slid+`"></td>
     <td style="width:15%;"><select  onchange="renewRate()" oninput="entrying()" name="particular" id="particular" class="form-select">
             <option value="empty"></option>
             {% for row in rows %}
@@ -332,6 +345,5 @@ function addRows() {
     <td><button class="my-btn" id="entryButton" onmouseover="rateStatusing()">Submit</button></td>
 </tr>`
 
-    let tree = document.getElementById('rowBody');
-    tree.append(rowModel);
+    $("tbody").append(rowModel);
 }
