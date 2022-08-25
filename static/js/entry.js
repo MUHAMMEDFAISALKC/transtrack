@@ -295,7 +295,7 @@ function validateEntry() {
     }   
 }
 
-function addRow() {
+function addRows() {
     let rowModel = `<tr>
     <td style="width:6%;"><input disabled type="number" id="slno"></td>
     <td style="width:15%;"><select  onchange="renewRate()" oninput="entrying()" name="particular" id="particular" class="form-select">
