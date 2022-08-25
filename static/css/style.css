@@ -46,7 +46,7 @@ ul li a i {
   align-items: flex-end;
   justify-content: center;
   flex: 50%;
-  background-color: #0a0a54;
+  background-color: #8e8ee2;
   box-sizing: border-box;
 }
 
@@ -313,7 +313,7 @@ footer {
   top: 300px;
   left: 200px;
   z-index: 999;
-  opacity: 0.3;
+  opacity: 0.1;
 }
 
 /*
