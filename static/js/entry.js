@@ -333,5 +333,5 @@ function addRows() {
 </tr>`
 
     let tree = document.getElementById('rowBody');
-    tree.innerHTML =+ rowModel;
+    tree.append(rowModel);
 }
