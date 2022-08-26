@@ -66,7 +66,7 @@
         <div class="invoice-data">
             <table class="bill-a table">
                 <tr class="bill-row" style="background-color:rgb(229, 234, 238) ;">
-                    <th style="flex:1;" >SL.NO</th>
+                    <th style="flex:1;">SL.NO</th>
                     <th style="flex:2;">PARTICULRS</th>
                     <th style="flex:1;">QTY</th>
                     <th style="flex:1;">PRICE</th>
@@ -76,47 +76,47 @@
                     <td style="flex:1;">1</td>
                     <td style="flex:2;">{{itemNames}}</td>
                     <td style="flex:1;">{{quantity}}</td>
-                    <td style="flex:1;">{{rate}}</td>
-                    <td style="flex:1.5; text-align: right;">{{price}}</td>
+                    <td style="flex:1;">₹ {{rate}}</td>
+                    <td style="flex:1.5; text-align: right;">₹ {{price}}</td>
                 </tr>
                 <tr class="bill-row">
                     <td style="flex:3; border: white;"></td>
                     <th style="border: white; text-align: right;">Sub Total</th>
-                    <td style="text-align: right;">{{price}}</td>
+                    <td style="text-align: right;">₹ {{price}}</td>
                 </tr>
                 {% if cgst %}
                 <tr class="bill-row">
                     <td style="flex:3; border: white;"></td>
                     <th style="border: white; text-align: right;">CGST 9%</th>
-                    <td style="text-align: right;">{{cgst}}</td>
+                    <td style="text-align: right;">₹ {{cgst}}</td>
                 </tr>
                 <tr class="bill-row">
                     <td style="flex:3; border: white;"></td>
                     <th style="border: white; text-align: right;">SGST 9%</th>
-                    <td style="text-align: right;">{{sgst}}</td>
+                    <td style="text-align: right;">₹ {{sgst}}</td>
                 </tr>
                 {% endif %}
                 {% if igst %}
                 <tr class="bill-row">
                     <td style="flex:3; border: white;"></td>
                     <th style="border: white; text-align: right;">IGST 18%</th>
-                    <td style="text-align: right;">{{igst}}</td>
+                    <td style="text-align: right;">₹ {{igst}}</td>
                 </tr>
                 {% endif %}
                 <tr class="bill-row">
                     <td style="flex:3; border: white;"></td>
                     <th style="border: white; text-align: right;">TOTAL GST</th>
-                    <td style="text-align: right;">{{totalGst}}</td>
+                    <td style="text-align: right;">₹ {{totalGst}}</td>
                 </tr>
                 <tr class="bill-row">
                     <td style="flex:3; border: white;"></td>
                     <th style="border: white; text-align: right;">SHIPPING & MCL</th>
-                    <td style="text-align: right;">{{shipLoad}}</td>
+                    <td style="text-align: right;">₹ {{shipLoad}}</td>
                 </tr>
                 <tr class="bill-row">
                     <td style="flex:3; border: white;"></td>
                     <th style="border: white; text-align: right;">TOTAL PRICE</th>
-                    <th style="text-align: right; background-color:rgb(229, 234, 238)">{{totalPrice}}</th>
+                    <th style="text-align: right; background-color:rgb(229, 234, 238)">₹ {{totalPrice}}</th>
                 </tr>
             </table>
         </div>
