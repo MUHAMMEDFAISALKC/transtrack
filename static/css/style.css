@@ -330,3 +330,21 @@ footer {
 }
 
 /*# sourceMappingURL=style.css.map */
+
+
+/*-------------------- Report page CSS ------------------------*/
+
+.reportPage {
+  display: flex;
+  flex-direction: column;
+  background-color: #e7ebeb;
+  flex:1;
+  align-items: flex-start;
+  justify-content: flex-start;
+
+}
+
+.reportPage > section > img {
+  margin: 30px;
+  border-radius: 10px;
+}
