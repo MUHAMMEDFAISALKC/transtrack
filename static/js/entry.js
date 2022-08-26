@@ -57,7 +57,7 @@ async function autoEntry() {
     let location = document.getElementById("state").value
     if (location=="kerala") {
         document.getElementById("igst").value = ""
-        document.getElementById("slno").value = 1
+        slNumbering()
         particularCopy()
         await autoRating()
         await pricing()
@@ -295,17 +295,40 @@ function validateEntry() {
     }   
 }
 
+// entry date formating
+function dateFormating(val) {
+    let div = document.getElementById("billDate")
+    let a = val.split("-")
+    div.type ='text'
+    div.style.width = "100%"
+    for (let i=0; i<a.length; i++) {
+        console.log(a[i])
+    }
+    a = a[2] +"-"+ a[1] +"-"+ a[0]
+    div.value = a
+    console.log(a)
+}
+function dateTyping() {
+    let div = document.getElementById("billDate")
+    div.type = 'date'
+    div.style.width = '90%'
+}
+
 async function slNumbering() {
     var slArray = []
-    for (let i=0; i<10; i++) {
+    for (let i=1; i<11; i++) {
         idname = 'slno'+i
         if(document.getElementById(idname)) {
         slArray[i]=i
         }
     }
-    slno = slArray.length
-    return slno
+    let slno = slArray.length-1
+    let slid = "slno"+slno
+    console.log(slid)
+    document.getElementById(slid).value = slno
 }
+
+
 function addRows() {
     let slid = slNumbering();
 
