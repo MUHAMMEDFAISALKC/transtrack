@@ -45,7 +45,7 @@
                     </select>
                 </div>
                 <div>
-                    <span><input style="width: 90%; height: 33px;" type="date" lang="en-GB" name="billDate" id="billDate"></span>
+                    <span><input style="width: 90%; height: 33px;" type="date" lang="en-GB" onclick="dateTyping()" oninput="dateFormating(value)" name="billDate" id="billDate"></span>
                 </div> 
             </div>
             <div class="entryHead" style="flex:1">
@@ -109,7 +109,7 @@
             </thead>
             <tbody id="rowBody">
                 <tr>
-                    <td style="width:6%;"><input disabled type="number" id="slno0"></td>
+                    <td style="width:6%;"><input disabled type="number" id="slno1"></td>
                     <td style="width:15%;"><select  onchange="renewRate()" oninput="entrying()" name="particular" id="particular" class="form-select">
                             <option value="empty"></option>
                             {% for row in rows %}
