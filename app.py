@@ -131,3 +131,7 @@ def entry():
         invoiceNo = 1
         rows = db.execute("SELECT * FROM bricks")
         return render_template("entry.html", rows=rows, invoiceNo=invoiceNo)
+
+@app.route("/report")
+def index():
+    return render_template("index.html")
