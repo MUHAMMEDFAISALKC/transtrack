@@ -366,6 +366,5 @@ function addRows() {
     </td>
     <td><button class="my-btn" id="entryButton" onmouseover="rateStatusing()">Submit</button></td>
 </tr>`
-
     $("tbody").append(rowModel);
 }
