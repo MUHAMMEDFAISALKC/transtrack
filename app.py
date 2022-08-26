@@ -123,9 +123,9 @@ def entry():
         totalGst = request.form.get("totalGst")
         totalPrice = request.form.get("totalPrice")
         actMenu = request.form.get("actMenu")
-        qrcodemaking(totalPrice)
+        qrSrc = qrcodemaking(totalPrice)
         return render_template("bill.html", 
-        invoiceNo = invoiceNo, address2 = address2, billDate=billDate , client = client, address1 = address1, shipLoad=shipLoad, clientGst = clientGst, cPhone1 = cPhone1, cPhone2 = cPhone2, paymentMode =paymentMode, vehicleNo = vehicleNo, site = site,
+        qrSrc = qrSrc, invoiceNo = invoiceNo, address2 = address2, billDate=billDate , client = client, address1 = address1, shipLoad=shipLoad, clientGst = clientGst, cPhone1 = cPhone1, cPhone2 = cPhone2, paymentMode =paymentMode, vehicleNo = vehicleNo, site = site,
         itemNames = itemNames, quantity = quantity, rate = rate, price = price, cgst = cgst, sgst = sgst, igst = igst, totalGst = totalGst, totalPrice = totalPrice, actMenu = actMenu)
 
     else:
