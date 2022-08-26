@@ -64,10 +64,20 @@ async function autoEntry() {
         await mult9()
         await totalGsting()
         totalPricing()
-    } else if (location=="TamilNadu" || location=="Karnataka") {
+    } else if (location=="TamilNadu") {
         document.getElementById("cgst").value = ""
         document.getElementById("sgst").value = ""
-        document.getElementById("slno").value = 1
+        slNumbering()
+        particularCopy()
+        await autoRating()
+        await pricing()
+        await mult18()
+        await totalGsting()
+        totalPricing()
+    } else if (location=="Karnataka") {
+        document.getElementById("cgst").value = ""
+        document.getElementById("sgst").value = ""
+        slNumbering()
         particularCopy()
         await autoRating()
         await pricing()
