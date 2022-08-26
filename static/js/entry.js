@@ -214,7 +214,6 @@ function editEntrying() {
 }
 
 // calling cancelEntry
-
 console.log(document.getElementById("actMenu"))
 function toggleAction () {
     if (document.getElementById("actMenu")) {
@@ -295,7 +294,7 @@ function validateEntry() {
     }   
 }
 
-// entry date formating
+// Entry date formating
 function dateFormating(val) {
     let div = document.getElementById("billDate")
     let a = val.split("-")
@@ -314,6 +313,7 @@ function dateTyping() {
     div.style.width = '90%'
 }
 
+// serial Numbering
 async function slNumbering() {
     var slArray = []
     for (let i=1; i<11; i++) {
@@ -331,7 +331,6 @@ async function slNumbering() {
 
 function addRows() {
     let slid = slNumbering();
-
     let rowModel = `<tr style="margin-top:10px">
     <td style="width:6%;"><input disabled type="number" value="`+slid+`" id="slno`+slid+`"></td>
     <td style="width:15%;"><select  onchange="renewRate()" oninput="entrying()" name="particular" id="particular" class="form-select">
