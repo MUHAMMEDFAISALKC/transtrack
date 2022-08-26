@@ -17,9 +17,9 @@ def login_required(f):
 def qrcodemaking(amount):
     qlink= "upi://pay?appid=com.infra.inb&tr=&mc=&pa=9447536992@indianbank&pn=MS%GABBRO%CEMENT%BRICKS%AND%PRODUCTS&tn=&am="+amount+"&cu=INR"
     img = qrcode.make(qlink)
-    print(qlink)
+
     newPath = filenaming()
-    print(newPath)
+    
     img.save(newPath, "PNG")
     os.system("open qr.png")
     return newPath
