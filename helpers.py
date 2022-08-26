@@ -1,8 +1,8 @@
-import imp
 from flask import redirect, session
 from functools import  wraps
 import os
 import qrcode
+import os.path
 
 
 
@@ -18,5 +18,18 @@ def qrcodemaking(amount):
     qlink= "upi://pay?appid=com.infra.inb&tr=&mc=&pa=9447536992@indianbank&pn=MS%GABBRO%CEMENT%BRICKS%AND%PRODUCTS&tn=&am="+amount+"&cu=INR"
     img = qrcode.make(qlink)
     print(qlink)
-    img.save("./static/img/qr.png", "PNG")
+    newPath = filenaming()
+    print(newPath)
+    img.save(newPath, "PNG")
     os.system("open qr.png")
+    return newPath
+
+def filenaming():
+    newPath = "./static/img/payqr/qr0.png"
+    for i in range(10):
+        if os.path.exists(newPath):
+            count= str(i+1)
+            newPath = "./static/img/payqr/qr"+count+".png"
+        else:
+            return newPath
+        return newPath
